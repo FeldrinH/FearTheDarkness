@@ -1,0 +1,16 @@
+[
+{
+  "modid": "shadowmancy",
+  "name": "Shadowmancy - Fear the Darkness",
+  "description": "Tame the shadows with the shady arts...",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["FeldrinH"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

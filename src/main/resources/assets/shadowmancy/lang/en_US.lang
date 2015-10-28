@@ -1,0 +1,9 @@
+death.attack.darkness=%1$s fell to the Darkness.
+death.attack.deepDarkness=%1$s diminished in the Darkness.
+death.attack.lifePoolEmpty=%1$s ran out of Life.
+
+item.lifePoolPendant.name=Life Pool Pendant
+
+tile.shadowRefluxTable.name=Shadow Reflux Table
+
+container.shadowRefluxTable=Shadow Reflux Table
