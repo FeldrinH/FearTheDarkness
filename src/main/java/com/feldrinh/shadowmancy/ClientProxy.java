@@ -24,7 +24,7 @@ public class ClientProxy extends CommonProxy
 		FMLCommonHandler.instance().bus().register(shadowRefluxRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(shadowRefluxTableEntity.class, shadowRefluxRenderer);
         //MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Shadowmancy.ShadowRefluxTable), );
-
+		//tEST
         //MinecraftForge.EVENT_BUS.register(new shadowlurkerRenderHandler());
         
 		LogHelper.log(Level.INFO, "Clientside postInit completed. #CombinedClientRules");
