@@ -12,3 +12,6 @@
 /MinecraftForge-Credits.txt
 /MinecraftForge-License.txt
 /.gradle/
+/.settings/
+/build/
+/jars/
