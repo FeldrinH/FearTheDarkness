@@ -25,7 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 
-@Mod(modid="shadowmancy", name="Shadowmancy", version="0.2.2", dependencies="required-after:Baubles")
+@Mod(modid="shadowmancy", name="Shadowmancy", version="0.3.0", dependencies="required-after:Baubles")
 
 public class Shadowmancy
 {

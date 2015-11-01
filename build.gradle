@@ -17,8 +17,8 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "0.2.2"
-group= "com.feldrinh.shadowmancy" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "0.3.0"
+group= "feldrinh.shadowmancy" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "shadowmancy"
 
 minecraft {
