@@ -13,6 +13,7 @@
 /MinecraftForge-License.txt
 /.gradle/
 /.settings/
+.metadata/
 /build/
 /jars/
 Baubles-1.7.10-1.0.1.10-api.zip
