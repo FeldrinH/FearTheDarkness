@@ -1,4 +1,4 @@
-package com.feldrinh.shadowmancy.blocks;
+package feldrinh.shadowmancy.blocks;
 
 import java.util.Random;
 

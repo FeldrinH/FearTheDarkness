@@ -1,4 +1,4 @@
-package com.feldrinh.shadowmancy.utility;
+package feldrinh.shadowmancy.utility;
 
 import org.apache.logging.log4j.Level;
 import cpw.mods.fml.common.FMLLog;

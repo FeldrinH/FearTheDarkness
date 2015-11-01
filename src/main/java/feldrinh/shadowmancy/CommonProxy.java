@@ -1,4 +1,4 @@
-package com.feldrinh.shadowmancy;
+package feldrinh.shadowmancy;
 
 public class CommonProxy
 {

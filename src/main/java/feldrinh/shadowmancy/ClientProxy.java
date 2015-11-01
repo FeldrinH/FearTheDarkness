@@ -1,16 +1,15 @@
-package com.feldrinh.shadowmancy;
+package feldrinh.shadowmancy;
 
 import org.apache.logging.log4j.Level;
-
-import com.feldrinh.shadowmancy.blocks.shadowRefluxTableEntity;
-import com.feldrinh.shadowmancy.blocks.shadowRefluxTableRenderer;
-import com.feldrinh.shadowmancy.items.shadowlurkerRenderHandler;
-import com.feldrinh.shadowmancy.utility.LogHelper;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import feldrinh.shadowmancy.blocks.shadowRefluxTableEntity;
+import feldrinh.shadowmancy.blocks.shadowRefluxTableRenderer;
+import feldrinh.shadowmancy.items.shadowlurkerRenderHandler;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;

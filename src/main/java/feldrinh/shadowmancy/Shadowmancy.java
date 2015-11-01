@@ -1,13 +1,6 @@
-package com.feldrinh.shadowmancy;
+package feldrinh.shadowmancy;
 
 import org.apache.logging.log4j.Level;
-
-import com.feldrinh.shadowmancy.blocks.shadowRefluxTable;
-import com.feldrinh.shadowmancy.blocks.shadowRefluxTableEntity;
-import com.feldrinh.shadowmancy.items.lifePoolPendant;
-import com.feldrinh.shadowmancy.items.shadowlurkerArmor;
-import com.feldrinh.shadowmancy.utility.LogHelper;
-import com.feldrinh.shadowmancy.ServerProxy;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -18,6 +11,12 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import feldrinh.shadowmancy.ServerProxy;
+import feldrinh.shadowmancy.blocks.shadowRefluxTable;
+import feldrinh.shadowmancy.blocks.shadowRefluxTableEntity;
+import feldrinh.shadowmancy.items.lifePoolPendant;
+import feldrinh.shadowmancy.items.shadowlurkerArmor;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;

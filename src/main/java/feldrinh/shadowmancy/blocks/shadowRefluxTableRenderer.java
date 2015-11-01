@@ -1,15 +1,14 @@
-package com.feldrinh.shadowmancy.blocks;
+package feldrinh.shadowmancy.blocks;
 
 import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
-
-import com.feldrinh.shadowmancy.utility.LogHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.RenderTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.WorldTickEvent;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.inventory.IInventory;

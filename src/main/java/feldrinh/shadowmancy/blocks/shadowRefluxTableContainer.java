@@ -1,9 +1,8 @@
-package com.feldrinh.shadowmancy.blocks;
+package feldrinh.shadowmancy.blocks;
 
 import org.apache.logging.log4j.Level;
 
-import com.feldrinh.shadowmancy.utility.LogHelper;
-
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;

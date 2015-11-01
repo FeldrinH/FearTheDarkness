@@ -1,10 +1,9 @@
-package com.feldrinh.shadowmancy.items;
+package feldrinh.shadowmancy.items;
 
 import org.apache.logging.log4j.Level;
 
-import com.feldrinh.shadowmancy.Shadowmancy;
-import com.feldrinh.shadowmancy.utility.LogHelper;
-
+import feldrinh.shadowmancy.Shadowmancy;
+import feldrinh.shadowmancy.utility.LogHelper;
 import javafx.scene.control.Tab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;

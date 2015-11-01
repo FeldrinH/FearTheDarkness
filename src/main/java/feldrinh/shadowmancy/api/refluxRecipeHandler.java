@@ -1,4 +1,4 @@
-package com.feldrinh.shadowmancy.api;
+package feldrinh.shadowmancy.api;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,14 +1,13 @@
-package com.feldrinh.shadowmancy.items;
+package feldrinh.shadowmancy.items;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.Level;
 
-import com.feldrinh.shadowmancy.shadowEventHandler;
-import com.feldrinh.shadowmancy.utility.LogHelper;
-
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import feldrinh.shadowmancy.shadowEventHandler;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

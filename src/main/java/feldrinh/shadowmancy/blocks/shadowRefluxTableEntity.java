@@ -1,12 +1,11 @@
-package com.feldrinh.shadowmancy.blocks;
+package feldrinh.shadowmancy.blocks;
 
 import org.apache.logging.log4j.Level;
 
-import com.feldrinh.shadowmancy.Shadowmancy;
-import com.feldrinh.shadowmancy.api.IRefluxRecipe;
-import com.feldrinh.shadowmancy.api.refluxRecipeHandler;
-import com.feldrinh.shadowmancy.utility.LogHelper;
-
+import feldrinh.shadowmancy.Shadowmancy;
+import feldrinh.shadowmancy.api.IRefluxRecipe;
+import feldrinh.shadowmancy.api.refluxRecipeHandler;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

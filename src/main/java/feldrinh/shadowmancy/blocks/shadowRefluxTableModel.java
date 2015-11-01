@@ -4,12 +4,11 @@
 // Keep in mind that you still need to fill in some blanks
 // - ZeuX
 
-package com.feldrinh.shadowmancy.blocks;
+package feldrinh.shadowmancy.blocks;
 
 import org.apache.logging.log4j.Level;
 
-import com.feldrinh.shadowmancy.utility.LogHelper;
-
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;

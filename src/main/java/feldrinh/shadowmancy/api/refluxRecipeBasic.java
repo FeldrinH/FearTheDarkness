@@ -1,4 +1,4 @@
-package com.feldrinh.shadowmancy.api;
+package feldrinh.shadowmancy.api;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

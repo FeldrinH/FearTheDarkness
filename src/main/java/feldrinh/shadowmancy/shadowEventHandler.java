@@ -1,10 +1,13 @@
-package com.feldrinh.shadowmancy;
+package feldrinh.shadowmancy;
 
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.ServerTickEvent;
 import cpw.mods.fml.relauncher.Side;
+import feldrinh.shadowmancy.items.lifePoolPendant;
+import feldrinh.shadowmancy.items.shadowlurkerArmor;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,10 +26,6 @@ import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import static cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import java.util.ArrayList;
 import org.apache.logging.log4j.Level;
-
-import com.feldrinh.shadowmancy.items.lifePoolPendant;
-import com.feldrinh.shadowmancy.items.shadowlurkerArmor;
-import com.feldrinh.shadowmancy.utility.LogHelper;
 
 import baubles.api.BaublesApi;
 

@@ -1,9 +1,11 @@
-package com.feldrinh.shadowmancy;
+package feldrinh.shadowmancy;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import feldrinh.shadowmancy.items.shadowlurkerArmor;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.DamageSource;
@@ -13,9 +15,6 @@ import net.minecraft.world.EnumSkyBlock;
 import static cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 import org.apache.logging.log4j.Level;
-
-import com.feldrinh.shadowmancy.items.shadowlurkerArmor;
-import com.feldrinh.shadowmancy.utility.LogHelper;
 
 public class ftdTickHandler
 {

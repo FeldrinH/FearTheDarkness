@@ -1,13 +1,12 @@
-package com.feldrinh.shadowmancy;
+package feldrinh.shadowmancy;
 
 import org.apache.logging.log4j.Level;
 
-import com.feldrinh.shadowmancy.blocks.shadowRefluxTableContainer;
-import com.feldrinh.shadowmancy.blocks.shadowRefluxTableEntity;
-import com.feldrinh.shadowmancy.blocks.shadowRefluxTableGui;
-import com.feldrinh.shadowmancy.utility.LogHelper;
-
 import cpw.mods.fml.common.network.IGuiHandler;
+import feldrinh.shadowmancy.blocks.shadowRefluxTableContainer;
+import feldrinh.shadowmancy.blocks.shadowRefluxTableEntity;
+import feldrinh.shadowmancy.blocks.shadowRefluxTableGui;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

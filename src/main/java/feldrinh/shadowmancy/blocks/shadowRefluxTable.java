@@ -1,10 +1,9 @@
-package com.feldrinh.shadowmancy.blocks;
+package feldrinh.shadowmancy.blocks;
 
 import org.apache.logging.log4j.Level;
 
-import com.feldrinh.shadowmancy.Shadowmancy;
-import com.feldrinh.shadowmancy.utility.LogHelper;
-
+import feldrinh.shadowmancy.Shadowmancy;
+import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
