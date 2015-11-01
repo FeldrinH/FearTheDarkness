@@ -31,7 +31,7 @@ public class RefluxTableEntity extends TileEntity implements ISidedInventory
 	private static final float darkSpeed = 0.01F;
 	boolean isActive;
 	
-	public void refreshItem()
+	public void updateItemClient()
 	{
 		if(this.getWorldObj().isRemote)
 		{
@@ -75,8 +75,15 @@ public class RefluxTableEntity extends TileEntity implements ISidedInventory
 		}
 		else if(!this.getWorldObj().isRemote && curRecipe != null)
 		{
-			progress += curRecipe.getProgressSpeed();
-			darkLevel -= curRecipe.getShadowSpeed();
+			if(darkLevel >= curRecipe.getShadowSpeed())
+			{
+				progress += curRecipe.getProgressSpeed();
+				darkLevel -= curRecipe.getShadowSpeed();
+			}
+			if(progress >= progressGoal)
+			{
+				setInventorySlotContents(0, curRecipe.getNewResult(tableItem.stackSize));
+			}
 		}
 	}
 	
@@ -90,7 +97,7 @@ public class RefluxTableEntity extends TileEntity implements ISidedInventory
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
     {
 		readSyncFromNBT(pkt.func_148857_g());
-		refreshItem();
+		updateItemClient();
 		//LogHelper.log(Level.INFO, "#Packet");
     }
 	

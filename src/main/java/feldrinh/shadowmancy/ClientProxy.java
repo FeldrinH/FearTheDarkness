@@ -8,7 +8,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import feldrinh.shadowmancy.blocks.RefluxTableEntity;
 import feldrinh.shadowmancy.blocks.RefluxTableRenderer;
-import feldrinh.shadowmancy.items.ShadowlurkerRenderHandler;
+//import feldrinh.shadowmancy.items.ShadowlurkerRenderHandler;
 import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;

@@ -7,7 +7,6 @@ public class RefluxRecipeBasic implements IRefluxRecipe
 {
 	private final Item baseItem;
 	private final ItemStack resultItemStack;
-	/**The speed at which shadow is consumed (per tick).*/
 	private final float shadowSpeed;
 	/**The speed at which progress is accumulated (per tick)*/
 	private final float progressSpeed;
@@ -35,7 +34,6 @@ public class RefluxRecipeBasic implements IRefluxRecipe
 	@Override
 	public boolean baseMatches(ItemStack base)
 	{
-		//Better MC/Forge infrastructure integration
 		return (base.getItem() == baseItem);
 	}
 	
@@ -44,5 +42,13 @@ public class RefluxRecipeBasic implements IRefluxRecipe
 	{
 		//More fuzziness?
 		return ItemStack.areItemStacksEqual(resultItemStack, result);
+	}
+
+	@Override
+	public ItemStack getNewResult(int curStackSize)
+	{
+		ItemStack newResult = resultItemStack.copy();
+		newResult.stackSize = curStackSize;
+		return newResult;
 	}
 }

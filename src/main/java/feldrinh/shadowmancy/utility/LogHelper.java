@@ -7,7 +7,7 @@ public class LogHelper
 {
 	public static void log(Level logLevel, Object object)
 	{
-		FMLLog.log("Shadowmancy",logLevel,String.valueOf(object));
+		FMLLog.log("Shadowmancy",logLevel,object.toString());
 	}
 
 }
