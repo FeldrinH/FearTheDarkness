@@ -15,10 +15,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-public class shadowRefluxTableRenderer extends TileEntitySpecialRenderer
+public class RefluxTableRenderer extends TileEntitySpecialRenderer
 {
 	private ResourceLocation texture = new ResourceLocation("shadowmancy:textures/blocks/shadowRefluxTable.png");
-	private shadowRefluxTableModel model = new shadowRefluxTableModel();
+	private RefluxTableModel model = new RefluxTableModel();
 	
 	@SubscribeEvent
 	public void incrementAnimation(ClientTickEvent event)
@@ -40,7 +40,7 @@ public class shadowRefluxTableRenderer extends TileEntitySpecialRenderer
 			model.render(0.0625F, partialTickTime);
 			
 			GL11.glRotatef(180, 0F, 0F, 1F);
-			shadowRefluxTableEntity shadowTable = (shadowRefluxTableEntity)tileEntity;
+			RefluxTableEntity shadowTable = (RefluxTableEntity)tileEntity;
 			if(shadowTable.tableEntity != null)
 			{
 				shadowTable.tableEntity.hoverStart = 0.0F;

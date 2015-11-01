@@ -10,9 +10,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 
-public class shadowRefluxTableContainer extends Container
+public class RefluxTableContainer extends Container
 {
-	private shadowRefluxTableEntity shadowTable; 
+	private RefluxTableEntity shadowTable; 
 	private InventoryPlayer playerInventory;
 	
 	private class shadowSlot extends Slot
@@ -30,7 +30,7 @@ public class shadowRefluxTableContainer extends Container
 		}*/
 	}
 	
-	public shadowRefluxTableContainer(shadowRefluxTableEntity shadowTable, EntityPlayer player)
+	public RefluxTableContainer(RefluxTableEntity shadowTable, EntityPlayer player)
 	{
 		this.shadowTable = shadowTable;
 		this.playerInventory = player.inventory;

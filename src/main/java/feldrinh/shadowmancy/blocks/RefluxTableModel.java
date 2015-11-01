@@ -13,7 +13,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class shadowRefluxTableModel extends ModelBase
+public class RefluxTableModel extends ModelBase
 {
 	//fields
 	ModelRenderer Base;
@@ -35,7 +35,7 @@ public class shadowRefluxTableModel extends ModelBase
 	private static final float incrementAngle = (float)(0.02*Math.PI);
 	private float coreRotation;
 	
-	public shadowRefluxTableModel()
+	public RefluxTableModel()
 	{
 		textureWidth = 64;
 		textureHeight = 32;

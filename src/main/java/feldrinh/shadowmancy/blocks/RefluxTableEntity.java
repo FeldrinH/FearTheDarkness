@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Level;
 
 import feldrinh.shadowmancy.Shadowmancy;
 import feldrinh.shadowmancy.api.IRefluxRecipe;
-import feldrinh.shadowmancy.api.refluxRecipeHandler;
+import feldrinh.shadowmancy.api.RefluxRecipeHandler;
 import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +19,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import scala.Int;
 
-public class shadowRefluxTableEntity extends TileEntity implements ISidedInventory 
+public class RefluxTableEntity extends TileEntity implements ISidedInventory 
 {
 	ItemStack tableItem;
 	EntityItem tableEntity;
@@ -27,7 +27,7 @@ public class shadowRefluxTableEntity extends TileEntity implements ISidedInvento
 	private float progress;
 	private float progressGoal;
 	private float darkLevel;
-	static final float maxDarkLevel = 100.0F;
+	private static final float maxDarkLevel = 100.0F;
 	private static final float darkSpeed = 0.01F;
 	boolean isActive;
 	
@@ -50,7 +50,7 @@ public class shadowRefluxTableEntity extends TileEntity implements ISidedInvento
 	{
 		if(!this.getWorldObj().isRemote)
 		{
-			curRecipe = refluxRecipeHandler.getRecipeFromItem(tableItem);
+			curRecipe = RefluxRecipeHandler.getRecipeFromItem(tableItem);
 			if(curRecipe != null)
 			{
 				progressGoal = tableItem.stackSize;

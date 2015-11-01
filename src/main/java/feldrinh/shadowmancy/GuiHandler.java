@@ -3,24 +3,24 @@ package feldrinh.shadowmancy;
 import org.apache.logging.log4j.Level;
 
 import cpw.mods.fml.common.network.IGuiHandler;
-import feldrinh.shadowmancy.blocks.shadowRefluxTableContainer;
-import feldrinh.shadowmancy.blocks.shadowRefluxTableEntity;
-import feldrinh.shadowmancy.blocks.shadowRefluxTableGui;
+import feldrinh.shadowmancy.blocks.RefluxTableContainer;
+import feldrinh.shadowmancy.blocks.RefluxTableEntity;
+import feldrinh.shadowmancy.blocks.RefluxTableGui;
 import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class guiHandler implements IGuiHandler
+public class GuiHandler implements IGuiHandler
 {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
 	{
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		//LogHelper.log(Level.INFO, tileEntity);
-		if(tileEntity instanceof shadowRefluxTableEntity)
+		if(tileEntity instanceof RefluxTableEntity)
 		{
-			return new shadowRefluxTableContainer((shadowRefluxTableEntity)tileEntity,player);
+			return new RefluxTableContainer((RefluxTableEntity)tileEntity,player);
 		}
 		return null;
 	}
@@ -30,9 +30,9 @@ public class guiHandler implements IGuiHandler
 	{
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		//LogHelper.log(Level.INFO, tileEntity);
-		if(tileEntity instanceof shadowRefluxTableEntity)
+		if(tileEntity instanceof RefluxTableEntity)
 		{
-			return new shadowRefluxTableGui((shadowRefluxTableEntity)tileEntity, player);
+			return new RefluxTableGui((RefluxTableEntity)tileEntity, player);
 		}
 		return null;
 	}

@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Level;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import feldrinh.shadowmancy.shadowEventHandler;
+import feldrinh.shadowmancy.ShadowEventHandler;
 import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -17,9 +17,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
-public class lifePoolPendant extends Item implements IBauble
+public class LifePoolPendant extends Item implements IBauble
 {	
-	public lifePoolPendant()
+	public LifePoolPendant()
 	{
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabCombat);
@@ -41,14 +41,14 @@ public class lifePoolPendant extends Item implements IBauble
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player)
 	{
 		//shadowEventHandler.lifePoolMembers.add(player);
-		shadowEventHandler.recalcPoolMembers();
+		ShadowEventHandler.recalcPoolMembers();
 	}
 
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player)
 	{
 		//shadowEventHandler.lifePoolMembers.remove(player);
-		shadowEventHandler.recalcPoolMembers();
+		ShadowEventHandler.recalcPoolMembers();
 	}
 
 	@Override

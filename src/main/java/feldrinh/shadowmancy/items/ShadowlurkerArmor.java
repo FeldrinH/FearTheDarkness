@@ -20,9 +20,9 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 
-public class shadowlurkerArmor extends ItemArmor
+public class ShadowlurkerArmor extends ItemArmor
 {
-	public shadowlurkerArmor(int type)
+	public ShadowlurkerArmor(int type)
 	{
 		super(Shadowmancy.shadowCloth, 0, type);
 		setCreativeTab(CreativeTabs.tabCombat);
@@ -53,9 +53,9 @@ public class shadowlurkerArmor extends ItemArmor
 		player.inventory.armorInventory[2] != null
 		&& player.inventory.armorInventory[1] != null
 		&& player.inventory.armorInventory[0] != null
-		&& player.inventory.armorInventory[2].getItem() instanceof shadowlurkerArmor
-		&& player.inventory.armorInventory[1].getItem() instanceof shadowlurkerArmor
-		&& player.inventory.armorInventory[0].getItem() instanceof shadowlurkerArmor;
+		&& player.inventory.armorInventory[2].getItem() instanceof ShadowlurkerArmor
+		&& player.inventory.armorInventory[1].getItem() instanceof ShadowlurkerArmor
+		&& player.inventory.armorInventory[0].getItem() instanceof ShadowlurkerArmor;
 	}
 	
 	public static boolean checkArmor(EntityPlayer player)
@@ -65,10 +65,10 @@ public class shadowlurkerArmor extends ItemArmor
 		&& player.inventory.armorInventory[2] != null
 		&& player.inventory.armorInventory[1] != null
 		&& player.inventory.armorInventory[0] != null
-		&& player.inventory.armorInventory[3].getItem() instanceof shadowlurkerArmor
-		&& player.inventory.armorInventory[2].getItem() instanceof shadowlurkerArmor
-		&& player.inventory.armorInventory[1].getItem() instanceof shadowlurkerArmor
-		&& player.inventory.armorInventory[0].getItem() instanceof shadowlurkerArmor;	
+		&& player.inventory.armorInventory[3].getItem() instanceof ShadowlurkerArmor
+		&& player.inventory.armorInventory[2].getItem() instanceof ShadowlurkerArmor
+		&& player.inventory.armorInventory[1].getItem() instanceof ShadowlurkerArmor
+		&& player.inventory.armorInventory[0].getItem() instanceof ShadowlurkerArmor;	
 	}
 	
 	@Override

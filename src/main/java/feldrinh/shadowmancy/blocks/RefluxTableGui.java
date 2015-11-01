@@ -8,15 +8,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
-public class shadowRefluxTableGui extends GuiContainer
+public class RefluxTableGui extends GuiContainer
 {
 	private static final ResourceLocation guiTexture = new ResourceLocation("shadowmancy:textures/blocks/shadowRefluxTableGUI.png");
-	private shadowRefluxTableEntity shadowTable;
+	private RefluxTableEntity shadowTable;
 	private Random random;
 	
-	public shadowRefluxTableGui(shadowRefluxTableEntity shadowTable, EntityPlayer player)
+	public RefluxTableGui(RefluxTableEntity shadowTable, EntityPlayer player)
 	{
-		super(new shadowRefluxTableContainer(shadowTable, player));
+		super(new RefluxTableContainer(shadowTable, player));
 		this.shadowTable = shadowTable;
 		this.random = new Random();
 		xSize = 176;

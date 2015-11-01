@@ -8,7 +8,7 @@ import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
-public class shadowlurkerRenderHandler
+public class ShadowlurkerRenderHandler
 {
 	@SubscribeEvent
 	public void multiplyShadowlurker(RenderPlayerEvent.Pre event)

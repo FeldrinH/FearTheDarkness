@@ -12,9 +12,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class shadowRefluxTable extends BlockContainer 
+public class RefluxTable extends BlockContainer 
 {
-	public shadowRefluxTable() 
+	public RefluxTable() 
 	{
 		super(Material.rock);
         setCreativeTab(CreativeTabs.tabMisc);
@@ -57,6 +57,6 @@ public class shadowRefluxTable extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) 
 	{
-		return new shadowRefluxTableEntity();
+		return new RefluxTableEntity();
 	}
 }

@@ -12,10 +12,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import feldrinh.shadowmancy.ServerProxy;
-import feldrinh.shadowmancy.blocks.shadowRefluxTable;
-import feldrinh.shadowmancy.blocks.shadowRefluxTableEntity;
-import feldrinh.shadowmancy.items.lifePoolPendant;
-import feldrinh.shadowmancy.items.shadowlurkerArmor;
+import feldrinh.shadowmancy.blocks.RefluxTable;
+import feldrinh.shadowmancy.blocks.RefluxTableEntity;
+import feldrinh.shadowmancy.items.LifePoolPendant;
+import feldrinh.shadowmancy.items.ShadowlurkerArmor;
 import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,7 +31,7 @@ public class Shadowmancy
     @SidedProxy(clientSide="com.feldrinh.shadowmancy.ClientProxy",serverSide="com.feldrinh.shadowmancy.ServerProxy")
     public static CommonProxy proxy;
     
-    private static lifePoolPendant LifePoolPendant;
+    private static LifePoolPendant LifePoolPendant;
     
     public static final ArmorMaterial shadowCloth = EnumHelper.addArmorMaterial("shadowCloth", 5, new int[] {1,3,2,1}, 0);
     //public static final ArmorMaterial shadeMail = ;
@@ -39,14 +39,14 @@ public class Shadowmancy
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-    	GameRegistry.registerItem(LifePoolPendant = new lifePoolPendant(), "lifePoolPendant");
-    	GameRegistry.registerItem(new shadowlurkerArmor(0).setUnlocalizedName("shadowlurkerHead"), "shadowlurkerHead");
-    	GameRegistry.registerItem(new shadowlurkerArmor(1).setUnlocalizedName("shadowlurkerBody"), "shadowlurkerBody");
-    	GameRegistry.registerItem(new shadowlurkerArmor(2).setUnlocalizedName("shadowlurkerLegs"), "shadowlurkerLegs");
-    	GameRegistry.registerItem(new shadowlurkerArmor(3).setUnlocalizedName("shadowlurkerFeet"), "shadowlurkerFeet");
+    	GameRegistry.registerItem(LifePoolPendant = new LifePoolPendant(), "lifePoolPendant");
+    	GameRegistry.registerItem(new ShadowlurkerArmor(0).setUnlocalizedName("shadowlurkerHead"), "shadowlurkerHead");
+    	GameRegistry.registerItem(new ShadowlurkerArmor(1).setUnlocalizedName("shadowlurkerBody"), "shadowlurkerBody");
+    	GameRegistry.registerItem(new ShadowlurkerArmor(2).setUnlocalizedName("shadowlurkerLegs"), "shadowlurkerLegs");
+    	GameRegistry.registerItem(new ShadowlurkerArmor(3).setUnlocalizedName("shadowlurkerFeet"), "shadowlurkerFeet");
     	
-    	GameRegistry.registerBlock(new shadowRefluxTable(), "shadowRefluxTable");
-    	GameRegistry.registerTileEntity(shadowRefluxTableEntity.class, "shadowRefluxTableEntity");
+    	GameRegistry.registerBlock(new RefluxTable(), "shadowRefluxTable");
+    	GameRegistry.registerTileEntity(RefluxTableEntity.class, "shadowRefluxTableEntity");
     	
     	LogHelper.log(Level.INFO, "Shadowmancy preInit completed. Still waiting...");
     }
@@ -54,17 +54,17 @@ public class Shadowmancy
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	NetworkRegistry.INSTANCE.registerGuiHandler(this, new guiHandler());
+    	NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     	LogHelper.log(Level.INFO, "Shadowmancy init completed. We're not there yet...");
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-    	FMLCommonHandler.instance().bus().register(new ftdTickHandler());
+    	FMLCommonHandler.instance().bus().register(new FtdTickHandler());
         LogHelper.log(Level.INFO, "Fear for the Darkness rises...");
         
-        shadowEventHandler poolEventHandler = new shadowEventHandler(LifePoolPendant);
+        ShadowEventHandler poolEventHandler = new ShadowEventHandler(LifePoolPendant);
         FMLCommonHandler.instance().bus().register(poolEventHandler);
         MinecraftForge.EVENT_BUS.register(poolEventHandler);
         

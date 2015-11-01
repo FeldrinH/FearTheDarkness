@@ -3,7 +3,7 @@ package feldrinh.shadowmancy.api;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class refluxRecipeBasic implements IRefluxRecipe
+public class RefluxRecipeBasic implements IRefluxRecipe
 {
 	private final Item baseItem;
 	private final ItemStack resultItemStack;
@@ -12,7 +12,7 @@ public class refluxRecipeBasic implements IRefluxRecipe
 	/**The speed at which progress is accumulated (per tick) and */
 	private final float progressSpeed;
 	
-	public refluxRecipeBasic(Item baseItem, ItemStack resultItemStack, float progressSpeed, float shadowSpeed)
+	public RefluxRecipeBasic(Item baseItem, ItemStack resultItemStack, float progressSpeed, float shadowSpeed)
 	{
 		this.baseItem = baseItem;
 		this.resultItemStack = resultItemStack;

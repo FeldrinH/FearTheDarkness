@@ -7,7 +7,7 @@ import org.apache.commons.lang3.NotImplementedException;
 
 import net.minecraft.item.ItemStack;
 
-public class refluxRecipeHandler 
+public class RefluxRecipeHandler 
 {
 	private static final List<IRefluxRecipe> recipeList = new ArrayList<IRefluxRecipe>();
 	

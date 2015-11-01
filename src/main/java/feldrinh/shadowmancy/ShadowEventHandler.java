@@ -5,8 +5,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.ServerTickEvent;
 import cpw.mods.fml.relauncher.Side;
-import feldrinh.shadowmancy.items.lifePoolPendant;
-import feldrinh.shadowmancy.items.shadowlurkerArmor;
+import feldrinh.shadowmancy.items.LifePoolPendant;
+import feldrinh.shadowmancy.items.ShadowlurkerArmor;
 import feldrinh.shadowmancy.utility.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLiving;
@@ -29,9 +29,9 @@ import org.apache.logging.log4j.Level;
 
 import baubles.api.BaublesApi;
 
-public class shadowEventHandler
+public class ShadowEventHandler
 {
-	public shadowEventHandler(lifePoolPendant lifePoolItem)
+	public ShadowEventHandler(LifePoolPendant lifePoolItem)
 	{
 		lifePool = lifePoolItem;
 		lifePoolMembers = new ArrayList<EntityLivingBase>();
@@ -41,7 +41,7 @@ public class shadowEventHandler
 	public static final DamageSource lifePoolEmpty = (new DamageSource("lifePoolEmpty").setDamageBypassesArmor().setDamageIsAbsolute());
 
 	public static ArrayList<EntityLivingBase> lifePoolMembers;
-	private static lifePoolPendant lifePool;
+	private static LifePoolPendant lifePool;
 
 	//public static boolean scheduledRecalc;
 
@@ -148,7 +148,7 @@ public class shadowEventHandler
 		if(event.target instanceof EntityPlayer 
 		&& event.target.worldObj.getSavedLightValue(EnumSkyBlock.Block,MathHelper.floor_double(event.target.posX),MathHelper.floor_double(event.target.posY)+1,MathHelper.floor_double(event.target.posZ)) == 0
 		&& event.target.getBrightness(1.0F) < 0.084F
-		&& shadowlurkerArmor.checkArmor((EntityPlayer)event.target) 
+		&& ShadowlurkerArmor.checkArmor((EntityPlayer)event.target) 
 		&& event.entityLiving.func_94060_bK() != event.target
 		&& event.entityLiving.getDistanceSqToEntity(event.target) > 6.0D)
 		{
