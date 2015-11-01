@@ -55,6 +55,12 @@ public class RefluxTableEntity extends TileEntity implements ISidedInventory
 			{
 				progressGoal = tableItem.stackSize;
 				progress = 0.0f;
+				isActive = true;
+				LogHelper.log(Level.INFO,tableItem);
+			}
+			else
+			{
+				isActive = false;
 			}
 			this.getWorldObj().markBlockForUpdate(xCoord, yCoord, zCoord);
 		}

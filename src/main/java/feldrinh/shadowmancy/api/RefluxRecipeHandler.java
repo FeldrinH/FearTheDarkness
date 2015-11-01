@@ -11,8 +11,17 @@ public class RefluxRecipeHandler
 {
 	private static final List<IRefluxRecipe> recipeList = new ArrayList<IRefluxRecipe>();
 	
+	public static void addRecipe(IRefluxRecipe recipe)
+	{
+		recipeList.add(recipe);
+	}
+	
 	public static IRefluxRecipe getRecipeFromItem(ItemStack baseItem)
 	{
+		if(baseItem == null)
+		{
+			return null;
+		}
 		for(IRefluxRecipe recipe : recipeList)
 		{
 			if (recipe.baseMatches(baseItem))
