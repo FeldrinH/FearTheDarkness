@@ -56,7 +56,7 @@ public class RefluxTableEntity extends TileEntity implements ISidedInventory
 				progressGoal = tableItem.stackSize;
 				progress = 0.0f;
 				isActive = true;
-				LogHelper.log(Level.INFO,tableItem);
+				//LogHelper.log(Level.INFO,tableItem);
 			}
 			else
 			{
@@ -98,7 +98,6 @@ public class RefluxTableEntity extends TileEntity implements ISidedInventory
     {
 		readSyncFromNBT(pkt.func_148857_g());
 		updateItemClient();
-		//LogHelper.log(Level.INFO, "#Packet");
     }
 	
 	@Override
@@ -106,7 +105,8 @@ public class RefluxTableEntity extends TileEntity implements ISidedInventory
 	{
 		super.writeToNBT(nbtTag);
 		writeSyncToNBT(nbtTag);
-		//LogHelper.log(Level.INFO, tableItem);
+		nbtTag.setFloat("progress", progress);
+		nbtTag.setFloat("darkLevel", darkLevel);
 	}
 	
 	@Override
@@ -114,24 +114,45 @@ public class RefluxTableEntity extends TileEntity implements ISidedInventory
 	{
 		super.readFromNBT(nbtTag);
 		readSyncFromNBT(nbtTag);
-		//LogHelper.log(Level.INFO, tableItem);
+		progress = nbtTag.getFloat("progress");
+		darkLevel = nbtTag.getFloat("darkLevel");
+		if (!this.hasWorldObj())
+		{
+			curRecipe = RefluxRecipeHandler.getRecipeFromItem(tableItem);
+			if(curRecipe != null)
+			{
+				progressGoal = tableItem.stackSize;
+				isActive = true;
+			}
+			else
+			{
+				isActive = false;
+			}
+			LogHelper.log(Level.INFO, progress);
+			LogHelper.log(Level.INFO, progressGoal);
+			LogHelper.log(Level.INFO, darkLevel);
+		}
 	}
 	
-	public NBTTagCompound writeSyncToNBT(NBTTagCompound nbtTag)
+	private NBTTagCompound writeSyncToNBT(NBTTagCompound nbtTag)
 	{
+		LogHelper.log(Level.INFO, "WRITE!");
 		if (tableItem != null)
 		{
 			nbtTag.setTag("shadowItem", tableItem.writeToNBT(new NBTTagCompound()));
 		}
+		nbtTag.setBoolean("active",isActive);
 		return nbtTag;
 	}
 	
-	public void readSyncFromNBT(NBTTagCompound nbtTag)
+	private void readSyncFromNBT(NBTTagCompound nbtTag)
 	{
+		LogHelper.log(Level.INFO, "READ!");
 		if (nbtTag.hasKey("shadowItem"))
 		{
 			tableItem = ItemStack.loadItemStackFromNBT(nbtTag.getCompoundTag("shadowItem"));
 		}
+		isActive = nbtTag.getBoolean("active");
 	}
 	
 	@Override

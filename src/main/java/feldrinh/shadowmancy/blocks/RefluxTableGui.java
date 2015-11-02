@@ -26,7 +26,7 @@ public class RefluxTableGui extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int int1, int int2)
 	{
-		this.fontRendererObj.drawString(this.shadowTable.hasCustomInventoryName() ? this.shadowTable.getInventoryName() : I18n.format(this.shadowTable.getInventoryName(), new Object[0]), 8, 6, 4210752);
+		this.fontRendererObj.drawString(I18n.format(this.shadowTable.getInventoryName(), new Object[0]), 8, 6, 4210752);
 	}
 	
 	@Override
