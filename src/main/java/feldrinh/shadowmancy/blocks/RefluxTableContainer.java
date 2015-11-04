@@ -57,32 +57,56 @@ public class RefluxTableContainer extends Container
 	}
 	
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slot)
+	public ItemStack transferStackInSlot(EntityPlayer player, int slotNum)
 	{
-		ItemStack item = ((Slot)inventorySlots.get(slot)).getStack();
-		if (item == null)
+		Slot slot = (Slot)inventorySlots.get(slotNum);
+		if (!slot.getHasStack())
 		{
 			LogHelper.log(Level.INFO, "No Item");
 			return null;
 		}
+		ItemStack item = slot.getStack();
 		ItemStack itemCopy = item.copy();
 		
-		if (slot == 0)
+		if (slotNum == 0)
 		{
-			if(mergeItemStack(item,1,37,false))
-			{
-				LogHelper.log(Level.INFO, "Add");
-				return item;
-			}
-			else
+			if(!mergeItemStack(item,1,37,false))
 			{
 				LogHelper.log(Level.INFO, "Fail Add");
 				return null;
 			}
+			else
+			{
+				LogHelper.log(Level.INFO, "Add");
+				if (item.stackSize == 0)
+				{
+					LogHelper.log(Level.INFO, "Cleared Empty Stack");
+					slot.putStack(null);
+				}
+				else
+					slot.onSlotChanged();
+			}
 		}
-		LogHelper.log(Level.INFO, "Swap");
-		((Slot)inventorySlots.get(slot)).putStack(((Slot)inventorySlots.get(0)).getStack());
-		((Slot)inventorySlots.get(0)).putStack(item);
+		else
+		{
+			LogHelper.log(Level.INFO, "Swap");
+			if (((Slot)inventorySlots.get(0)).getHasStack())
+			{
+				LogHelper.log(Level.INFO, "SwapBoth");
+				slot.putStack(((Slot)inventorySlots.get(0)).getStack());
+			}
+			else
+			{
+				LogHelper.log(Level.INFO, "SwapEmpty");
+				slot.putStack(null);
+			}
+			((Slot)inventorySlots.get(0)).putStack(item);
+            /*if (item.stackSize == itemCopy.stackSize)
+            {
+            	LogHelper.log(Level.INFO, item.toString() + " " + itemCopy.toString());
+                return null;
+            }*/
+		}
 		return itemCopy;
 	}
 	
