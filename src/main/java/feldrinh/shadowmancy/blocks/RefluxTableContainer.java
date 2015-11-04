@@ -89,24 +89,36 @@ public class RefluxTableContainer extends Container
 		}
 		else
 		{
-			LogHelper.log(Level.INFO, "Swap");
-			if (((Slot)inventorySlots.get(0)).getHasStack())
+			if(!mergeItemStack(item,0,1,false) && item.stackSize == itemCopy.stackSize)
 			{
-				LogHelper.log(Level.INFO, "SwapBoth");
-				slot.putStack(((Slot)inventorySlots.get(0)).getStack());
+				LogHelper.log(Level.INFO, "SwapSwap");
+				if (((Slot)inventorySlots.get(0)).getHasStack())
+				{
+					slot.putStack(((Slot)inventorySlots.get(0)).getStack());
+				}
+				else
+				{
+					slot.putStack(null);
+				}
+				((Slot)inventorySlots.get(0)).putStack(item);
+				slot.onPickupFromSlot(player, item);
+				return null;
 			}
 			else
 			{
-				LogHelper.log(Level.INFO, "SwapEmpty");
-				slot.putStack(null);
-			}
-			((Slot)inventorySlots.get(0)).putStack(item);
-            /*if (item.stackSize == itemCopy.stackSize)
-            {
-            	LogHelper.log(Level.INFO, item.toString() + " " + itemCopy.toString());
-                return null;
-            }*/
+				LogHelper.log(Level.INFO, "SwapMerge");
+				if (item.stackSize == 0)
+				{
+					LogHelper.log(Level.INFO, "Cleared Empty Stack");
+					slot.putStack(null);
+				}
+				else
+				{
+					slot.onSlotChanged();
+				}
+			}	
 		}
+		slot.onPickupFromSlot(player, item);
 		return itemCopy;
 	}
 	
