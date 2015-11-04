@@ -9,6 +9,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 
 public class RefluxTableContainer extends Container
 {
@@ -17,7 +18,8 @@ public class RefluxTableContainer extends Container
 	
 	private class shadowSlot extends Slot
 	{
-		public shadowSlot(IInventory inventory, int int1, int int2, int int3) {
+		public shadowSlot(IInventory inventory, int int1, int int2, int int3)
+		{
 			super(inventory, int1, int2, int3);
 		}
 		
@@ -38,6 +40,8 @@ public class RefluxTableContainer extends Container
 		int i;
 		int j;
 		
+		addSlotToContainer(new shadowSlot(shadowTable,0,80,38));
+		
         for (i = 0; i < 3; ++i)
         {
             for (j = 0; j < 9; ++j)
@@ -50,12 +54,41 @@ public class RefluxTableContainer extends Container
         {
             this.addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
         }
-        
-        addSlotToContainer(new shadowSlot(shadowTable,0,80,38));
 	}
 	
 	@Override
-	public boolean canInteractWith(EntityPlayer player) {
+	public ItemStack transferStackInSlot(EntityPlayer player, int slot)
+	{
+		ItemStack item = ((Slot)inventorySlots.get(slot)).getStack();
+		if (item == null)
+		{
+			LogHelper.log(Level.INFO, "No Item");
+			return null;
+		}
+		ItemStack itemCopy = item.copy();
+		
+		if (slot == 0)
+		{
+			if(mergeItemStack(item,1,37,false))
+			{
+				LogHelper.log(Level.INFO, "Add");
+				return item;
+			}
+			else
+			{
+				LogHelper.log(Level.INFO, "Fail Add");
+				return null;
+			}
+		}
+		LogHelper.log(Level.INFO, "Swap");
+		((Slot)inventorySlots.get(slot)).putStack(((Slot)inventorySlots.get(0)).getStack());
+		((Slot)inventorySlots.get(0)).putStack(item);
+		return itemCopy;
+	}
+	
+	@Override
+	public boolean canInteractWith(EntityPlayer player)
+	{
 		return shadowTable.isUseableByPlayer(player);
 	}
 }
