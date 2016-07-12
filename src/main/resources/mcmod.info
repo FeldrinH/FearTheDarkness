@@ -1,8 +1,8 @@
 [
 {
-  "modid": "shadowmancy",
-  "name": "Shadowmancy - Fear the Darkness",
-  "description": "Tame the shadows with the shady arts...",
+  "modid": "fearthedarkness",
+  "name": "Fear The Darkness",
+  "description": "The Darkness is out to get you...",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
