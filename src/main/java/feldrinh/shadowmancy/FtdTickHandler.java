@@ -14,6 +14,8 @@ import net.minecraft.world.EnumSkyBlock;
 
 import static cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
+import java.util.Arrays;
+
 import org.apache.logging.log4j.Level;
 
 public class FtdTickHandler
@@ -32,6 +34,10 @@ public class FtdTickHandler
         {
         	float light = event.player.getBrightness(1.0F);
 
+        	//LogHelper.log(Level.INFO, event.player.worldObj.getBlockLightValue(MathHelper.floor_double(event.player.posX),MathHelper.floor_double(event.player.posY)+1,MathHelper.floor_double(event.player.posZ)));
+        	
+        	//LogHelper.log(Level.INFO, Arrays.toString(event.player.worldObj.provider.lightBrightnessTable));
+        	
     		//LogHelper.log(Level.INFO,event.player.worldObj.getSavedLightValue(EnumSkyBlock.Block,MathHelper.floor_double(event.player.posX),MathHelper.floor_double(event.player.posY)+1,MathHelper.floor_double(event.player.posZ)));
     		
         	if (light == 0.0F && !ShadowlurkerArmor.checkArmor(event.player))
