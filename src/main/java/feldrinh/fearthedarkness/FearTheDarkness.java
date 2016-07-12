@@ -19,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 
-@Mod(modid="fearthedarkness", name="FearTheDarkness", version="0.3.0")
+@Mod(modid="FearTheDarkness", name="Fear The Darkness", version="0.3.0")
 
 public class FearTheDarkness
 {
@@ -43,6 +43,6 @@ public class FearTheDarkness
     public void postInit(FMLPostInitializationEvent event)
     {
 		FMLCommonHandler.instance().bus().register(new FTDTickHandler());
-        LogHelper.log(Level.INFO, "Fear for The Darkness rises...");
+        LogHelper.log(Level.INFO, "Fear for the Darkness rises...");
     }
 }
