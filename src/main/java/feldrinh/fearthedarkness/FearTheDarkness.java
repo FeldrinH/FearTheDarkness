@@ -17,32 +17,36 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.ConfigCategory;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
+import java.util.Arrays;
 
-@Mod(modid="FearTheDarkness", name="Fear The Darkness", version="0.3.0")
+@Mod(modid = "FearTheDarkness", name = "Fear The Darkness", version = "0.3.0")
 
 public class FearTheDarkness
 {
-    @Mod.Instance("fearthedarkness")
-    public static FearTheDarkness instance;
+	@Mod.Instance("fearthedarkness")
+	public static FearTheDarkness instance;
 
-    @SidedProxy(clientSide="feldrinh.fearthedarkness.ClientProxy",serverSide="feldrinh.fearthedarkness.ServerProxy")
-    public static CommonProxy proxy;
-            
-    /*@EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {    	
-    }*/
+	@SidedProxy(clientSide = "feldrinh.fearthedarkness.ClientProxy", serverSide = "feldrinh.fearthedarkness.ServerProxy")
+	public static CommonProxy proxy;
 
-    /*@EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-    }*/
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		FTDConfig.loadConfig(event.getSuggestedConfigurationFile());
+	}
 
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
+	/*@EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+	}*/
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
 		FMLCommonHandler.instance().bus().register(new FTDTickHandler());
-        LogHelper.log(Level.INFO, "Fear for the Darkness rises...");
-    }
+		LogHelper.log(Level.INFO, "Fear for the Darkness rises...");
+	}
 }
