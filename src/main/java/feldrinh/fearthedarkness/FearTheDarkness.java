@@ -11,7 +11,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import feldrinh.fearthedarkness.ServerProxy;
 import feldrinh.fearthedarkness.utility.LogHelper;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -29,8 +28,8 @@ public class FearTheDarkness
 	@Mod.Instance("fearthedarkness")
 	public static FearTheDarkness instance;
 
-	@SidedProxy(clientSide = "feldrinh.fearthedarkness.ClientProxy", serverSide = "feldrinh.fearthedarkness.ServerProxy")
-	public static CommonProxy proxy;
+	/*@SidedProxy(clientSide = "feldrinh.fearthedarkness.ClientProxy", serverSide = "feldrinh.fearthedarkness.ServerProxy")
+	public static CommonProxy proxy;*/
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

@@ -39,7 +39,7 @@ public class FTDTickHandler
 					if (player.ticksExisted % conf.deepCooldown == 0)
 					{
 						player.hurtResistantTime = 0;
-						if (player.attackEntityFrom(FTDConfig.deepDarkness, conf.deepDamage))
+						if (player.attackEntityFrom(FTDConfig.deepDarkness, conf.deepDamage) && FTDConfig.supressRedFlash)
 						{
 							player.hurtTime = 0;
 						}
@@ -50,10 +50,9 @@ public class FTDTickHandler
 					if (player.ticksExisted % conf.cooldown == 0)
 					{
 						player.hurtResistantTime = 0;
-						if (player.attackEntityFrom(FTDConfig.darkness, conf.damage))
+						if (player.attackEntityFrom(FTDConfig.darkness, conf.damage) && FTDConfig.supressRedFlash)
 						{
 							player.hurtTime = 0;
-							player.hurtResistantTime = conf.cooldown; //Probably not the best solution
 						}
 					}
 				}
