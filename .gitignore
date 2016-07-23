@@ -1,19 +1,18 @@
 /bin/
 /eclipse/
-/Shadowmancy Textures/
-/ShadowServer/
-/ExtraUtilities 1.2.10/
 /README.txt
 /.classpath
 /.project
-/forge-1.7.10-10.13.4.1448-1.7.10-changelog.txt
+/forge-*.txt
 /CREDITS-fml.txt
 /LICENSE-fml.txt
 /MinecraftForge-Credits.txt
 /MinecraftForge-License.txt
+/Paulscode IBXM Library License.txt
+/Paulscode SoundSystem CodecIBXM License.txt
 /.gradle/
 /.settings/
 .metadata/
 /build/
+/run/
 /jars/
-Baubles-1.7.10-1.0.1.10-api.zip
