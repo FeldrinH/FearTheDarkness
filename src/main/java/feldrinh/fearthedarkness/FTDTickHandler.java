@@ -1,19 +1,17 @@
 package feldrinh.fearthedarkness;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.Phase;
-import cpw.mods.fml.common.gameevent.TickEvent.WorldTickEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import feldrinh.fearthedarkness.utility.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
-
-import static cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
+import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.Arrays;
 
@@ -26,7 +24,7 @@ public class FTDTickHandler
 	{
 		if (e.side == Side.SERVER && e.phase == Phase.START)
 		{
-			FTDConfig conf = FTDConfig.getConfigOrDefault(e.world.provider.dimensionId);
+			FTDConfig conf = FTDConfig.getConfigOrDefault(e.world.provider.getDimensionId());
 
 			for (Object playerObj : e.world.playerEntities)
 			{
@@ -62,18 +60,7 @@ public class FTDTickHandler
 
 	public static int getLightLevel(EntityPlayer player)
 	{
-		int i = MathHelper.floor_double(player.posX);
-		int j = MathHelper.floor_double(player.posZ);
-
-		if (player.worldObj.blockExists(i, 0, j))
-		{
-			double d = (player.boundingBox.maxY - player.boundingBox.minY) * 0.66D;
-			int k = MathHelper.floor_double(player.posY - (double) player.yOffset + d);
-			return player.worldObj.getBlockLightValue(i, k, j);
-		}
-		else
-		{
-			return 0;
-		}
+		BlockPos blockpos = new BlockPos(player.posX, player.posY + (double)player.getEyeHeight(), player.posZ);
+        return player.worldObj.isBlockLoaded(blockpos) ? player.worldObj.getLightFromNeighbors(blockpos) : 0;
 	}
 }
