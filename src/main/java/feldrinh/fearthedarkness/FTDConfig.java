@@ -61,12 +61,12 @@ public class FTDConfig
 		config.setCategoryPropertyOrder("default", Arrays.asList("DarknessDamage", "DamageMode", "Cooldown", "LightLevel", "DeepDarknessDamage", "DeepDamageMode", "DeepCooldown", "DeepLightLevel"));
 
 		defaultConfig.damage = (float)config.get("default", "DarknessDamage", 2.0D, "Amount of darkness damage to deal. Set to 0.0 to disable").getDouble();
-		defaultConfig.damageMode = DamageMode.valueOfOrDefault(config.get("default", "DamageMode", "CONSTANT", "Method of calculating damage/nCONSTANT - Unmodified damage value (damage)\nLINEARLIGHT - Damage increases by damage value each light level darker from threshold, with damage value being damage at threshold (damage * (threshold - light + 1))\nEXPLIGHT - Damage doubles each light level darker, with damage value being damage at light level 0 (2 ^ -light)").getString(), DamageMode.CONSTANT);
+		defaultConfig.damageMode = DamageMode.valueOfOrDefault(config.get("default", "DamageMode", "CONSTANT", "Method of calculating damage:\nCONSTANT - Unmodified damage value. (damage)\nLINEARLIGHT - Damage increases by damage value each light level darker, with damage value being damage at threshold. (damage * (threshold - light + 1))\nEXPLIGHT - Damage doubles each light level darker, with damage value being damage at light level 0. (2 ^ -light)").getString(), DamageMode.CONSTANT);
 		defaultConfig.cooldown = config.get("default", "Cooldown", 20, "Duration of cooldown (in ticks) after dealing darkness damage").setMinValue(1).getInt();
 		defaultConfig.lightLevel = config.get("default", "LightLevel", 7, "Light level below or equal to which to deal darkness damage").getInt();
 
 		defaultConfig.deepDamage = (float)config.get("default", "DeepDarknessDamage", 5.0, "Amount of deep darkness damage to deal. Set to 0.0 to disable").getDouble();
-		defaultConfig.deepDamageMode = DamageMode.valueOfOrDefault(config.get("default", "DeepDamageMode", "CONSTANT", "Method of calculating damage/nCONSTANT - Unmodified damage value (damage)\nLINEARLIGHT - Damage increases by damage value each light level darker from threshold, with damage value being damage at threshold (damage * (threshold - light + 1))\nEXPLIGHT - Damage doubles each light level darker, with damage value being damage at light level 0 (2 ^ -light)").getString(), DamageMode.CONSTANT);
+		defaultConfig.deepDamageMode = DamageMode.valueOfOrDefault(config.get("default", "DeepDamageMode", "CONSTANT", "Method of calculating damage:\nCONSTANT - Unmodified damage value. (damage)\nLINEARLIGHT - Damage increases by damage value each light level darker, with damage value being damage at threshold. (damage * (threshold - light + 1))\nEXPLIGHT - Damage doubles each light level darker, with damage value being damage at light level 0. (2 ^ -light)").getString(), DamageMode.CONSTANT);
 		defaultConfig.deepCooldown = config.get("default", "DeepCooldown", 20, "Duration of cooldown (in ticks) after dealing deep darkness damage").setMinValue(1).getInt();
 		defaultConfig.deepLightLevel = config.get("default", "DeepLightLevel", 0, "Light level below or equal to which to deal deep darkness damage").getInt();
 
@@ -109,19 +109,18 @@ public class FTDConfig
 				try
 				{
 					int dimension = Integer.parseInt(catName);
-					ConfigCategory cat = config.getCategory(catName);
 					FTDConfig conf = new FTDConfig();
 					LogHelper.log(Level.INFO, "Found config for dimension " + dimension);
 					
-					conf.damage = (float)cat.get("DarknessDamage").getDouble(FTDConfig.defaultConfig.damage);
-					conf.damageMode = DamageMode.valueOfOrDefault(cat.get("DamageMode").getString(), DamageMode.CONSTANT);
-					conf.cooldown =  cat.get("Cooldown").setMinValue(1).getInt(FTDConfig.defaultConfig.cooldown);
-					conf.lightLevel = cat.get("LightLevel").getInt(FTDConfig.defaultConfig.lightLevel);
+					conf.damage = (float)config.get(catName,"DarknessDamage", FTDConfig.defaultConfig.damage).getDouble();
+					conf.damageMode = DamageMode.valueOfOrDefault(config.get(catName,"DamageMode", FTDConfig.defaultConfig.damageMode.toString()).getString(), FTDConfig.defaultConfig.damageMode);
+					conf.cooldown =  config.get(catName, "Cooldown", FTDConfig.defaultConfig.cooldown).setMinValue(1).getInt();
+					conf.lightLevel = config.get(catName, "LightLevel", FTDConfig.defaultConfig.lightLevel).getInt();
 
-					conf.deepDamage = (float)cat.get("DeepDarknessDamage").getDouble(FTDConfig.defaultConfig.deepDamage);
-					conf.deepDamageMode = DamageMode.valueOfOrDefault(cat.get("DeepDamageMode").getString(), DamageMode.CONSTANT);
-					conf.deepCooldown = cat.get("DeepCooldown").setMinValue(1).getInt(FTDConfig.defaultConfig.deepCooldown);
-					conf.deepLightLevel = cat.get("DeepLightLevel").getInt(FTDConfig.defaultConfig.deepLightLevel);
+					conf.deepDamage = (float)config.get(catName,"DeepDarknessDamage", FTDConfig.defaultConfig.deepDamage).getDouble();
+					conf.deepDamageMode = DamageMode.valueOfOrDefault(config.get(catName,"DeepDamageMode", FTDConfig.defaultConfig.deepDamageMode.toString()).getString(), FTDConfig.defaultConfig.deepDamageMode);
+					conf.deepCooldown =  config.get(catName, "DeepCooldown", FTDConfig.defaultConfig.deepCooldown).setMinValue(1).getInt();
+					conf.deepLightLevel = config.get(catName, "DeepLightLevel", FTDConfig.defaultConfig.deepLightLevel).getInt();
 				
 					configs.put(dimension, conf);
 				}
