@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.util.Arrays;
 
-@Mod(modid = "FearTheDarkness", name = "Fear The Darkness", version = "0.4.1")
+@Mod(modid = "FearTheDarkness", name = "Fear The Darkness", version = "0.5.0")
 
 public class FearTheDarkness
 {
