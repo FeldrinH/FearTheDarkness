@@ -23,7 +23,7 @@ public enum DamageMode
 		@Override
 		public float getDamage(float damage, int threshold, int light)
 		{
-			return (float)Math.pow(damage, -light);
+			return damage * (1 << (threshold - light));
 		}
 	};
 
