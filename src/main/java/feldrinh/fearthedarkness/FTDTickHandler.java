@@ -4,9 +4,8 @@ import feldrinh.fearthedarkness.utility.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
@@ -24,7 +23,7 @@ public class FTDTickHandler
 	{
 		if (e.side == Side.SERVER && e.phase == Phase.START)
 		{
-			FTDConfig conf = FTDConfig.getConfigOrDefault(e.world.provider.getDimensionId());
+			FTDConfig conf = FTDConfig.getConfigOrDefault(e.world.provider.getDimension());
 
 			for (Object playerObj : e.world.playerEntities)
 			{
