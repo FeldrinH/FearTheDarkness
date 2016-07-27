@@ -84,21 +84,21 @@ public class FTDConfig
 		
 		config.setCategoryComment("default", "Default configuration" + Configuration.NEW_LINE + "Can be overriden per-dimension, by creating a category with dimension id as name and changing options in there");
 
-		config.setCategoryPropertyOrder("default", Arrays.asList("LightLevel", "Cooldown", "DamageMode", "Damage", "DamageDelta", "DamageTable", "DeepLightLevel", "DeepCooldown", "DeepDamageMode", "DeepDamage", "DeepDamageDelta", "DeepDamageTable"));
+		config.setCategoryPropertyOrder("default", Arrays.asList("LightThreshold", "Cooldown", "DamageMode", "Damage", "DamageDelta", "DamageTable", "DeepLightThreshold", "DeepCooldown", "DeepDamageMode", "DeepDamage", "DeepDamageDelta", "DeepDamageTable"));
 
 		defaultConfig.damage = (float)config.get("default", "Damage", 2.0D, "Amount of darkness damage to deal. Set to 0.0 to disable").getDouble();
 		defaultConfig.damageDelta = (float)config.get("default", "DamageDelta", 2.0D, "Used with DamageMode LINEARLIGHT and EXPLIGHT to modify damage based on light level, see DamageMode for details").getDouble();
-		defaultConfig.damageTable = convertDamageTable(config.get("default", "DamageTable", new double[]{7,6,5,4,3,2,1}, "Used with DamageMode TABLELIGHT. List of damage values from threshold darker.\nElement to access is calculated: threshold - light, where 0 is the 1st element.\nIf element is out of range, the last (corresponding to darkest light level) element is returned. If list is empty, Damage is returned.\nDefault value has corresponding light levels (assuming default LightLevel) as values.").getDoubleList());
+		defaultConfig.damageTable = convertDamageTable(config.get("default", "DamageTable", new double[]{7,6,5,4,3,2,1}, "Used with DamageMode TABLELIGHT. List of damage values, each corresponding to a light level from threshold darker.\nElement to access is calculated: threshold - light, where 0 is the 1st element.\nIf element is out of range, the last (corresponding to darkest light level) element is returned. If list is empty, Damage is returned.\nDefault value has corresponding light levels (assuming default LightLevel) as values.").getDoubleList());
 		defaultConfig.damageMode = DamageMode.valueOfOrDefault(config.get("default", "DamageMode", "CONSTANT", "Method of calculating damage:\nCONSTANT - Unmodified Damage value. (Damage)\nLINEARLIGHT - Damage increases by DamageDelta each light level darker. (Damage + DamageDelta * (Threshold - Light))\nEXPLIGHT - Damage is multiplied by DamageDelta each light level darker. (Damage * DamageDelta^(Threshold - Light))\nTABLELIGHT - Damage value is taken from DamageTable").getString(), DamageMode.CONSTANT);
 		defaultConfig.cooldown = config.get("default", "Cooldown", 20, "Duration of cooldown (in ticks) after dealing darkness damage").setMinValue(1).getInt();
-		defaultConfig.lightLevel = config.get("default", "LightLevel", 7, "Light level threshold below or equal to which to deal darkness damage").getInt();
+		defaultConfig.lightLevel = config.get("default", "LightThreshold", 7, "Light level threshold below or equal to which to deal darkness damage").getInt();
 
 		defaultConfig.deepDamage = (float)config.get("default", "DeepDamage", 5.0, "Amount of deep darkness damage to deal. Set to 0.0 to disable").getDouble();
 		defaultConfig.damageDelta = (float)config.get("default", "DeepDamageDelta", 2.0D, "Used with DamageMode LINEARLIGHT and EXPLIGHT to modify damage based on light level, see DamageMode for details").getDouble();
-		defaultConfig.deepDamageTable = convertDamageTable(config.get("default", "DeepDamageTable", new double[]{0}, "Used with DamageMode TABLELIGHT. List of damage values from threshold darker.\nElement to access is calculated: threshold - light, where 0 is the 1st element.\nIf element is out of range, the last (corresponding to darkest light level) element is returned. If list is empty, Damage is returned.\nDefault value has corresponding light levels (assuming default DeepLightLevel) as values.").getDoubleList());
+		defaultConfig.deepDamageTable = convertDamageTable(config.get("default", "DeepDamageTable", new double[]{0}, "Used with DamageMode TABLELIGHT. List of damage values, each corresponding to a light level from threshold darker.\nElement to access is calculated: threshold - light, where 0 is the 1st element.\nIf element is out of range, the last (corresponding to darkest light level) element is returned. If list is empty, Damage is returned.\nDefault value has corresponding light levels (assuming default DeepLightLevel) as values.").getDoubleList());
 		defaultConfig.deepDamageMode = DamageMode.valueOfOrDefault(config.get("default", "DeepDamageMode", "CONSTANT", "Method of calculating damage:\nCONSTANT - Unmodified Damage value. (Damage)\nLINEARLIGHT - Damage increases by DamageDelta each light level darker. (Damage + DamageDelta * (Threshold - Light))\nEXPLIGHT - Damage is multiplied by DamageDelta each light level darker. (Damage * DamageDelta^(Threshold - Light))\nTABLELIGHT - Damage value is taken from DamageTable").getString(), DamageMode.CONSTANT);
 		defaultConfig.deepCooldown = config.get("default", "DeepCooldown", 20, "Duration of cooldown (in ticks) after dealing deep darkness damage").setMinValue(1).getInt();
-		defaultConfig.deepLightLevel = config.get("default", "DeepLightLevel", 0, "Light level threshold below or equal to which to deal deep darkness damage").getInt();
+		defaultConfig.deepLightLevel = config.get("default", "DeepLightThreshold", 0, "Light level threshold below or equal to which to deal deep darkness damage").getInt();
 		
 		if(defaultConfig.damageMode == DamageMode.TABLELIGHT && defaultConfig.damageTable.length == 0)
 		{
@@ -155,14 +155,14 @@ public class FTDConfig
 					conf.damageTable = convertDamageTable(config.get(catName, "DamageTable", deconvertDamageTable(defaultConfig.damageTable)).getDoubleList());
 					conf.damageMode = DamageMode.valueOfOrDefault(config.get(catName,"DamageMode", defaultConfig.damageMode.toString()).getString(), FTDConfig.defaultConfig.damageMode);
 					conf.cooldown =  config.get(catName, "Cooldown", defaultConfig.cooldown).setMinValue(1).getInt();
-					conf.lightLevel = config.get(catName, "LightLevel", defaultConfig.lightLevel).getInt();
+					conf.lightLevel = config.get(catName, "LightThreshold", defaultConfig.lightLevel).getInt();
 
 					conf.deepDamage = (float)config.get(catName,"DeepDamage", defaultConfig.deepDamage).getDouble();
 					conf.deepDamageDelta = (float)config.get(catName, "DeepDamageDelta", defaultConfig.deepDamageDelta).getDouble();
 					conf.deepDamageTable = convertDamageTable(config.get(catName, "DeepDamageTable", deconvertDamageTable(defaultConfig.deepDamageTable)).getDoubleList());
 					conf.deepDamageMode = DamageMode.valueOfOrDefault(config.get(catName, "DeepDamageMode", defaultConfig.deepDamageMode.toString()).getString(), FTDConfig.defaultConfig.deepDamageMode);
 					conf.deepCooldown =  config.get(catName, "DeepCooldown", defaultConfig.deepCooldown).setMinValue(1).getInt();
-					conf.deepLightLevel = config.get(catName, "DeepLightLevel", defaultConfig.deepLightLevel).getInt();
+					conf.deepLightLevel = config.get(catName, "DeepLightThreshold", defaultConfig.deepLightLevel).getInt();
 				
 					if(conf.damageMode == DamageMode.TABLELIGHT && conf.damageTable.length == 0)
 					{
