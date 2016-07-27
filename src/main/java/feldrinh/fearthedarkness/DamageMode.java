@@ -5,7 +5,7 @@ public enum DamageMode
 	CONSTANT
 	{
 		@Override
-		public float getDamage(float damage, int threshold, int light)
+		public float getDamage(float damage, float damageDelta, int threshold, int light, float[] damageTable)
 		{
 			return damage;
 		}
@@ -13,22 +13,30 @@ public enum DamageMode
 	LINEARLIGHT
 	{
 		@Override
-		public float getDamage(float damage, int threshold, int light)
+		public float getDamage(float damage, float damageDelta, int threshold, int light, float[] damageTable)
 		{
-			return damage * (threshold - light + 1);
+			return damage + damageDelta * (threshold - light);
 		}
 	},
 	EXPLIGHT
 	{
 		@Override
-		public float getDamage(float damage, int threshold, int light)
+		public float getDamage(float damage, float damageDelta, int threshold, int light, float[] damageTable)
 		{
-			return damage * (1 << (threshold - light));
+			return damage * (float)Math.pow(damageDelta, threshold - light);
+		}
+	},
+	TABLELIGHT
+	{
+		@Override
+		public float getDamage(float damage, float damageDelta, int threshold, int light, float[] damageTable)
+		{
+			return damageTable[Math.min(threshold - light, damageTable.length - 1)];
 		}
 	};
 
-	public abstract float getDamage(float damage, int threshold, int light);
-
+	public abstract float getDamage(float damage, float damageDelta, int threshold, int light, float[] damageTable);
+	
 	public static DamageMode valueOfOrDefault(String value, DamageMode defaultValue)
 	{
 		try
