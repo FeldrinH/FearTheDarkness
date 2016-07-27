@@ -21,7 +21,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 import java.util.Arrays;
 
-@Mod(modid = "FearTheDarkness", name = "Fear The Darkness", version = "0.5.0")
+@Mod(modid = "FearTheDarkness", name = "Fear The Darkness", version = "0.6.1")
 
 public class FearTheDarkness
 {

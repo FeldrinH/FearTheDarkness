@@ -1,6 +1,7 @@
 package feldrinh.fearthedarkness;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -76,15 +77,25 @@ public class FTDConfig
 	    return output;
 	}
 	
+	public static void configBackwardsCompatibility(Configuration config, String catName)
+	{
+		config.renameProperty(catName, "DarknessDamage", "Damage");
+		config.renameProperty(catName, "DeepDarknessDamage", "Damage");
+		config.renameProperty(catName, "DeepLightLevel", "DeepLightThreshold");
+		config.renameProperty(catName, "LightLevel", "LightThreshold");
+	}
+	
 	public static void loadConfig(File file)
 	{
 		Configuration config = new Configuration(file);
 		config.load();
 
+		configBackwardsCompatibility(config, "default");
+		
 		
 		config.setCategoryComment("default", "Default configuration" + Configuration.NEW_LINE + "Can be overriden per-dimension, by creating a category with dimension id as name and changing options in there");
 
-		config.setCategoryPropertyOrder("default", Arrays.asList("LightThreshold", "Cooldown", "DamageMode", "Damage", "DamageDelta", "DamageTable", "DeepLightThreshold", "DeepCooldown", "DeepDamageMode", "DeepDamage", "DeepDamageDelta", "DeepDamageTable"));
+		config.setCategoryPropertyOrder("default", new ArrayList(Arrays.asList("LightThreshold", "Cooldown", "DamageMode", "Damage", "DamageDelta", "DamageTable", "DeepLightThreshold", "DeepCooldown", "DeepDamageMode", "DeepDamage", "DeepDamageDelta", "DeepDamageTable")));
 
 		defaultConfig.damage = (float)config.get("default", "Damage", 2.0D, "Amount of darkness damage to deal. Set to 0.0 to disable").getDouble();
 		defaultConfig.damageDelta = (float)config.get("default", "DamageDelta", 2.0D, "Used with DamageMode LINEARLIGHT and EXPLIGHT to modify damage based on light level, see DamageMode for details").getDouble();
@@ -111,7 +122,7 @@ public class FTDConfig
 		
 		config.setCategoryComment("global", "Global configuration" + Configuration.NEW_LINE + "Can not be overriden per-dimension");
 
-		config.setCategoryPropertyOrder("global", Arrays.asList("BypassArmor", "IsAbsolute", "DeepBypassArmor", "DeepIsAbsolute", "SupressRedFlash"));
+		config.setCategoryPropertyOrder("global", new ArrayList(Arrays.asList("BypassArmor", "IsAbsolute", "DeepBypassArmor", "DeepIsAbsolute", "SupressRedFlash")));
 
 		if(config.get("global", "BypassArmor", true, "Darkness damage bypasses armor protection. If false, also damages armor").getBoolean())
 		{
@@ -149,6 +160,8 @@ public class FTDConfig
 					int dimension = Integer.parseInt(catName);
 					FTDConfig conf = new FTDConfig();
 					LogHelper.log(Level.INFO, "Found config for dimension " + dimension);
+					
+					configBackwardsCompatibility(config, catName);
 					
 					conf.damage = (float)config.get(catName, "Damage", defaultConfig.damage).getDouble();
 					conf.damageDelta = (float)config.get(catName, "DamageDelta", defaultConfig.damageDelta).getDouble();
