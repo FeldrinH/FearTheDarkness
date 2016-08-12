@@ -95,7 +95,6 @@ public class FTDConfig
 		configBackwardsCompatibility(config, "default");
 		
 		config.setCategoryComment("default", "Default configuration" + Configuration.NEW_LINE + "Can be overriden per-dimension, by creating a category with dimension id as name and changing options in there");
-
 		config.setCategoryPropertyOrder("default", new ArrayList(Arrays.asList("LightThreshold", "Cooldown", "DamageMode", "Damage", "DamageDelta", "DamageTable", "DeepLightThreshold", "DeepCooldown", "DeepDamageMode", "DeepDamage", "DeepDamageDelta", "DeepDamageTable")));
 
 		defaultConfig.damage = (float)config.get("default", "Damage", 2.0D, "Amount of darkness damage to deal. Set to 0.0 with DamageMode CONSTANT to disable").getDouble();
@@ -122,7 +121,6 @@ public class FTDConfig
 		}
 		
 		config.setCategoryComment("global", "Global configuration" + Configuration.NEW_LINE + "Can not be overriden per-dimension");
-
 		config.setCategoryPropertyOrder("global", new ArrayList(Arrays.asList("BypassArmor", "IsAbsolute", "DeepBypassArmor", "DeepIsAbsolute", "SupressRedFlash")));
 
 		if(config.get("global", "BypassArmor", true, "Darkness damage bypasses armor protection. If false, also damages armor").getBoolean())
@@ -146,12 +144,26 @@ public class FTDConfig
 		supressRedFlash = config.get("global", "SupressRedFlash", true, "Supress player turning red on darkness and deep darkness damage").getBoolean();
 		
 		
+		//Load miscellaneous features configuration
+		config.setCategoryComment("features", "Miscellaneous features configuration");
+		config.setCategoryPropertyOrder("features", new ArrayList(Arrays.asList("EnableShadowcloak", "ShadowcloakID", "MultilevelShadowcloak")));
+		
+		int shadowcloakId = config.get("features", "ShadowcloakID", 231, "Shadowcloak enchantment ID. Only change this if it conflicts with another enchantment's ID").getInt();
+		boolean multilevelShadowcloak = config.get("features", "MultilevelShadowcloak", true, "If enabled, Shadowcloak will have 2 levels, where Shadowcloak I will protect you from normal Darkness and Shadowcloak II will protect you from normal Darkness and Deep Darkness.\nIf disabled Shadowcloak will have 1 level which will protect you from both.").getBoolean();
+		
+		if(config.get("features", "EnableShadowcloak", true, "Enable or disable Shadowcloak armor enchantment, which protects against the Darkness").getBoolean())
+		{
+			ShadowcloakEnchantment.self = new ShadowcloakEnchantment(shadowcloakId, multilevelShadowcloak ? 2 : 1);
+		}
+		
+		
 		if (config.hasChanged())
 		{
 			config.save();
 		}
 
 		
+		//Load per-dimension overrides (should not modify config file)
 		for (String catName : config.getCategoryNames())
 		{
 			if (!catName.equals("default") && !catName.equals("global"))
@@ -195,14 +207,5 @@ public class FTDConfig
 				}
 			}
 		}
-		
-		
-		//Load miscellaneous features configuration
-		config.setCategoryComment("features", "Miscellaneous features configuration");
-		
-		int shadowcloakId = 42; //Load from config
-		boolean multilevelShadowcloak = true; //Load from config
-		
-		ShadowcloakEnchantment.self = new ShadowcloakEnchantment(shadowcloakId, multilevelShadowcloak ? 2 : 1);
 	}
 }

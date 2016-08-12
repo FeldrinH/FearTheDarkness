@@ -40,8 +40,18 @@ public class ShadowcloakEnchantment extends Enchantment
         return 21 + level * 12;
     }
 	
+	public static boolean hasShadowcloak(ItemStack[] armor)
+	{
+		return self != null && self.checkShadowcloak(armor);
+	}
+	
+	public static boolean hasDeepShadowcloak(ItemStack[] armor)
+	{
+		return self != null && self.checkDeepShadowcloak(armor);
+	}
+	
 	//Has any level of Shadowcloak
-	public boolean hasShadowcloak(ItemStack[] armor)
+	private boolean checkShadowcloak(ItemStack[] armor)
 	{
 		return EnchantmentHelper.getEnchantmentLevel(effectId, armor[0]) > 0 ||
 			EnchantmentHelper.getEnchantmentLevel(effectId, armor[1]) > 0 ||
@@ -50,7 +60,7 @@ public class ShadowcloakEnchantment extends Enchantment
 	}
 	
 	//Has maximum level of Shadowcloak
-	public boolean hasDeepShadowcloak(ItemStack[] armor)
+	private boolean checkDeepShadowcloak(ItemStack[] armor)
 	{
 		return EnchantmentHelper.getEnchantmentLevel(effectId, armor[0]) >= maxLevel ||
 				EnchantmentHelper.getEnchantmentLevel(effectId, armor[1]) >= maxLevel ||
