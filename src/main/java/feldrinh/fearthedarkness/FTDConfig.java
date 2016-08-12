@@ -90,8 +90,9 @@ public class FTDConfig
 		Configuration config = new Configuration(file);
 		config.load();
 
-		configBackwardsCompatibility(config, "default");
 		
+		//Load Darkness damage configuration
+		configBackwardsCompatibility(config, "default");
 		
 		config.setCategoryComment("default", "Default configuration" + Configuration.NEW_LINE + "Can be overriden per-dimension, by creating a category with dimension id as name and changing options in there");
 
@@ -194,5 +195,14 @@ public class FTDConfig
 				}
 			}
 		}
+		
+		
+		//Load miscellaneous features configuration
+		config.setCategoryComment("features", "Miscellaneous features configuration");
+		
+		int shadowcloakId = 42; //Load from config
+		boolean multilevelShadowcloak = true; //Load from config
+		
+		ShadowcloakEnchantment.self = new ShadowcloakEnchantment(shadowcloakId, multilevelShadowcloak ? 2 : 1);
 	}
 }

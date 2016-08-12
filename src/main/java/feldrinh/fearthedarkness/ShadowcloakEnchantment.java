@@ -1,15 +1,24 @@
 package feldrinh.fearthedarkness;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 
 public class ShadowcloakEnchantment extends Enchantment
 {
-	protected ShadowcloakEnchantment(int id, int weight, int maxLevel)
+	protected ShadowcloakEnchantment(int id, int maxLevel)
 	{
-		super(id, weight, EnumEnchantmentType.armor);
+		super(id, 2, EnumEnchantmentType.armor);
+		
+		this.name = "shadowcloak";
 		this.maxLevel = maxLevel;
+		addToBookList(this);
 	}
+	
+	public static ShadowcloakEnchantment self;
 	
 	private final int maxLevel;
 	
@@ -17,5 +26,35 @@ public class ShadowcloakEnchantment extends Enchantment
 	public int getMaxLevel()
 	{
 		return maxLevel;
+	}
+	
+	@Override
+	public int getMinEnchantability(int level)
+    {
+        return 4 + level * 9;
+    }
+
+	@Override
+    public int getMaxEnchantability(int level)
+    {
+        return 21 + level * 12;
+    }
+	
+	//Has any level of Shadowcloak
+	public boolean hasShadowcloak(ItemStack[] armor)
+	{
+		return EnchantmentHelper.getEnchantmentLevel(effectId, armor[0]) > 0 ||
+			EnchantmentHelper.getEnchantmentLevel(effectId, armor[1]) > 0 ||
+			EnchantmentHelper.getEnchantmentLevel(effectId, armor[2]) > 0 ||
+			EnchantmentHelper.getEnchantmentLevel(effectId, armor[3]) > 0;
+	}
+	
+	//Has maximum level of Shadowcloak
+	public boolean hasDeepShadowcloak(ItemStack[] armor)
+	{
+		return EnchantmentHelper.getEnchantmentLevel(effectId, armor[0]) >= maxLevel ||
+				EnchantmentHelper.getEnchantmentLevel(effectId, armor[1]) >= maxLevel ||
+				EnchantmentHelper.getEnchantmentLevel(effectId, armor[2]) > maxLevel ||
+				EnchantmentHelper.getEnchantmentLevel(effectId, armor[3]) > maxLevel;
 	}
 }
