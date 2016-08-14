@@ -4,19 +4,18 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 
 public class ShadowcloakEnchantment extends Enchantment
 {
-	protected ShadowcloakEnchantment(int id, int maxLevel)
+	protected ShadowcloakEnchantment(int maxLevel)
 	{
-		super(id, new ResourceLocation("shadowcloak"), 2, EnumEnchantmentType.ARMOR);
+		super(Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR, new EntityEquipmentSlot[] {EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET});
 
 		this.name = "shadowcloak";
 		this.maxLevel = maxLevel;
-		addToBookList(this);
 	}
 	
 	public static ShadowcloakEnchantment self;
@@ -54,18 +53,18 @@ public class ShadowcloakEnchantment extends Enchantment
 	//Has any level of Shadowcloak
 	private boolean checkShadowcloak(ItemStack[] armor)
 	{
-		return EnchantmentHelper.getEnchantmentLevel(effectId, armor[0]) > 0 ||
-			EnchantmentHelper.getEnchantmentLevel(effectId, armor[1]) > 0 ||
-			EnchantmentHelper.getEnchantmentLevel(effectId, armor[2]) > 0 ||
-			EnchantmentHelper.getEnchantmentLevel(effectId, armor[3]) > 0;
+		return EnchantmentHelper.getEnchantmentLevel(this, armor[0]) > 0 ||
+			EnchantmentHelper.getEnchantmentLevel(this, armor[1]) > 0 ||
+			EnchantmentHelper.getEnchantmentLevel(this, armor[2]) > 0 ||
+			EnchantmentHelper.getEnchantmentLevel(this, armor[3]) > 0;
 	}
 	
 	//Has maximum level of Shadowcloak
 	private boolean checkDeepShadowcloak(ItemStack[] armor)
 	{
-		return EnchantmentHelper.getEnchantmentLevel(effectId, armor[0]) >= maxLevel ||
-				EnchantmentHelper.getEnchantmentLevel(effectId, armor[1]) >= maxLevel ||
-				EnchantmentHelper.getEnchantmentLevel(effectId, armor[2]) > maxLevel ||
-				EnchantmentHelper.getEnchantmentLevel(effectId, armor[3]) > maxLevel;
+		return EnchantmentHelper.getEnchantmentLevel(this, armor[0]) >= maxLevel ||
+				EnchantmentHelper.getEnchantmentLevel(this, armor[1]) >= maxLevel ||
+				EnchantmentHelper.getEnchantmentLevel(this, armor[2]) > maxLevel ||
+				EnchantmentHelper.getEnchantmentLevel(this, armor[3]) > maxLevel;
 	}
 }

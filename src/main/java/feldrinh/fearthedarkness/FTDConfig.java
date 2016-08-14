@@ -9,7 +9,9 @@ import java.util.Map;
 import org.apache.logging.log4j.Level;
 
 import feldrinh.fearthedarkness.utility.LogHelper;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 
@@ -153,7 +155,8 @@ public class FTDConfig
 		
 		if(config.get("features", "EnableShadowcloak", true, "Enable or disable Shadowcloak armor enchantment, which protects against the Darkness").getBoolean())
 		{
-			ShadowcloakEnchantment.self = new ShadowcloakEnchantment(shadowcloakId, multilevelShadowcloak ? 2 : 1);
+			ShadowcloakEnchantment.self = new ShadowcloakEnchantment(multilevelShadowcloak ? 2 : 1);
+			Enchantment.REGISTRY.register(shadowcloakId, new ResourceLocation("ftd", "shadowcloak"), ShadowcloakEnchantment.self);
 		}
 		
 		
