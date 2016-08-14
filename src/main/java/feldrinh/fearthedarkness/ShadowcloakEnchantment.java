@@ -6,13 +6,14 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 
 public class ShadowcloakEnchantment extends Enchantment
 {
 	protected ShadowcloakEnchantment(int id, int maxLevel)
 	{
-		super(id, 2, EnumEnchantmentType.armor);
-		
+		super(id, new ResourceLocation("shadowcloak"), 2, EnumEnchantmentType.ARMOR);
+
 		this.name = "shadowcloak";
 		this.maxLevel = maxLevel;
 		addToBookList(this);
