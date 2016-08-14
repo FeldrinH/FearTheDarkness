@@ -33,7 +33,7 @@ public class FTDTickHandler
 
 				if (light <= conf.deepLightLevel)
 				{
-					if (player.ticksExisted % conf.deepCooldown == 0)
+					if (player.ticksExisted % conf.deepCooldown == 0 && !ShadowcloakEnchantment.hasDeepShadowcloak(player.inventory.armorInventory))
 					{
 						player.hurtResistantTime = 0;
 						if (player.attackEntityFrom(FTDConfig.deepDarkness, conf.getDeepDamage(light)) && FTDConfig.supressRedFlash)
@@ -44,7 +44,7 @@ public class FTDTickHandler
 				}
 				else if (light <= conf.lightLevel)
 				{
-					if (player.ticksExisted % conf.cooldown == 0)
+					if (player.ticksExisted % conf.cooldown == 0 && !ShadowcloakEnchantment.hasShadowcloak(player.inventory.armorInventory))
 					{
 						player.hurtResistantTime = 0;
 						if (player.attackEntityFrom(FTDConfig.darkness, conf.getDamage(light)) && FTDConfig.supressRedFlash)
