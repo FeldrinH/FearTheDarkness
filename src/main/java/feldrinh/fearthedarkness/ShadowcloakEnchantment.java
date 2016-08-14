@@ -12,7 +12,7 @@ public class ShadowcloakEnchantment extends Enchantment
 {
 	protected ShadowcloakEnchantment(int id, int maxLevel)
 	{
-		super(id, new ResourceLocation("shadowcloak"), 2, EnumEnchantmentType.ARMOR);
+		super(id, new ResourceLocation("ftd", "shadowcloak"), 2, EnumEnchantmentType.ARMOR);
 
 		this.name = "shadowcloak";
 		this.maxLevel = maxLevel;
