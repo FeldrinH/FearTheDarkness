@@ -34,7 +34,7 @@ public class FTDTickHandler
 
 				int light = getLightLevel(player);
 
-				if (light <= conf.deepLightLevel)
+				if (light <= conf.deepLightLevel && conf.deepDamageMode != DamageMode.NONE)
 				{
 					if (player.ticksExisted % conf.deepCooldown == 0 && !ShadowcloakEnchantment.hasDeepShadowcloak(player.inventory.armorInventory))
 					{

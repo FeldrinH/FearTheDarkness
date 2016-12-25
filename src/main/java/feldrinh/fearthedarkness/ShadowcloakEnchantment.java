@@ -64,7 +64,7 @@ public class ShadowcloakEnchantment extends Enchantment
 	{
 		return EnchantmentHelper.getEnchantmentLevel(effectId, armor[0]) >= maxLevel ||
 				EnchantmentHelper.getEnchantmentLevel(effectId, armor[1]) >= maxLevel ||
-				EnchantmentHelper.getEnchantmentLevel(effectId, armor[2]) > maxLevel ||
-				EnchantmentHelper.getEnchantmentLevel(effectId, armor[3]) > maxLevel;
+				EnchantmentHelper.getEnchantmentLevel(effectId, armor[2]) >= maxLevel ||
+				EnchantmentHelper.getEnchantmentLevel(effectId, armor[3]) >= maxLevel;
 	}
 }
