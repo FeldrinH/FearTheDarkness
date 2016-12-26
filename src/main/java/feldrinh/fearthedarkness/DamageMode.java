@@ -33,6 +33,14 @@ public enum DamageMode
 		{
 			return damageTable[Math.min(threshold - light, damageTable.length - 1)];
 		}
+	},
+	NONE
+	{
+		@Override
+		public float getDamage(float damage, float damageDelta, int threshold, int light, float[] damageTable)
+		{
+			return 0;
+		}
 	};
 
 	public abstract float getDamage(float damage, float damageDelta, int threshold, int light, float[] damageTable);
